@@ -16,8 +16,6 @@ import { SidebarLeftComponent } from './core/sidebar-left/sidebar-left.component
 import { ViewMessageComponent } from './messages/pages/view-message/view-message.component';
 import { AddMessageComponent } from './messages/pages/add-message/add-message.component';
 import { EditMessageComponent } from './messages/pages/edit-message/edit-message.component';
-import { ChannelsTsComponent } from './core/models/channels.ts/channels.ts.component';
-import { UsersTsComponent } from './core/models/users.ts/users.ts.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +33,6 @@ import { UsersTsComponent } from './core/models/users.ts/users.ts.component';
     ViewMessageComponent,
     AddMessageComponent,
     EditMessageComponent,
-    ChannelsTsComponent,
-    UsersTsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
