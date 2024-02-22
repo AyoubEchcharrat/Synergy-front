@@ -16,6 +16,7 @@ import { SidebarLeftComponent } from './core/sidebar-left/sidebar-left.component
 import { ViewMessageComponent } from './messages/pages/view-message/view-message.component';
 import { AddMessageComponent } from './messages/pages/add-message/add-message.component';
 import { EditMessageComponent } from './messages/pages/edit-message/edit-message.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { EditMessageComponent } from './messages/pages/edit-message/edit-message
     AddMessageComponent,
     EditMessageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [ModalModule.forRoot(),BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
