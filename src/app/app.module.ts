@@ -16,6 +16,8 @@ import { SidebarLeftComponent } from './core/sidebar-left/sidebar-left.component
 import { ViewMessageComponent } from './messages/pages/view-message/view-message.component';
 import { AddMessageComponent } from './messages/pages/add-message/add-message.component';
 import { EditMessageComponent } from './messages/pages/edit-message/edit-message.component';
+import {UsersModule} from "./users/users.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { EditMessageComponent } from './messages/pages/edit-message/edit-message
     AddMessageComponent,
     EditMessageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, UsersModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
