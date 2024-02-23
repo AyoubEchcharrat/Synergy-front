@@ -1,31 +1,31 @@
 <form *ngIf="formUser" [formGroup]="formUser">
 
   <div class="mb-3">
-    <label for="username" class="form-label">username</label>
+    <label for="username" class="form-label">Nom d'utilisateur</label>
     <input formControlName="username" type="text" class="form-control" id="username" placeholder="username">
     <span *ngIf="formUser.controls['username'].errors?.['required'] &&
-      formUser.controls['username'].touched" class="text-danger">Veuillez entrer un nom d'utilisateur
+      formUser.controls['username'].touched" class="text-danger">Veuillez choisir un nom d'utilisateur
     </span>
   </div>
 
   <div class="mb-3">
-    <label for="firstName" class="form-label">firstName</label>
+    <label for="firstName" class="form-label">Nom</label>
     <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="firstName">
   </div>
 
   <div class="mb-3">
-    <label for="lastName" class="form-label">lastName</label>
+    <label for="lastName" class="form-label">Prénom</label>
     <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="lastName">
   </div>
 
   <div class="mb-3">
-    <label for="email" class="form-label">email</label>
+    <label for="email" class="form-label">Email</label>
     <input formControlName="email" type="email" class="form-control" id="email" placeholder="email">
     <span *ngIf="formUser.controls['email'].errors?.['required'] &&
-      formUser.controls['email'].touched" class="text-danger">Veuillez entrer un email
+      formUser.controls['email'].touched" class="text-danger">Veuillez saisir un email
     </span>
   </div>
 
-  <button [disabled]="!formUser.valid" (click)="save()" type="button" class="btn btn-primary">Envoyer</button>
+  <button [disabled]="!formUser.valid" (click)="save()" type="button" class="btn btn-primary">Créer mon compte</button>
 
 </form>

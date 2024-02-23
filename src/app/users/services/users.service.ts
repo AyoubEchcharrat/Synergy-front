@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable, of} from "rxjs";
-import {User} from "../../core/models/users";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { User } from '../../core/models/users';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
-  apiUrl:string = 'http://localhost:8080/api/users';
-  constructor(private http: HttpClient) { }
+  apiUrl: string = 'http://localhost:8080/api/users';
+
+  constructor(private http: HttpClient) {}
+
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}`);
   }
 
   addUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}`,user);
+    return this.http.post<User>(`${this.apiUrl}`, user);
   }
+
   deleteUser(id: number): Observable<User> {
     return this.http.delete<User>(`${this.apiUrl}/${id}`);
   }
@@ -23,11 +26,16 @@ export class UsersService {
   getUserById(id: number): Observable<User> {
     return this.http.get<User>(`${this.apiUrl}/${id}`);
   }
+
   updateUser(user: User): Observable<User> {
-    return this.http.put<User>(`${this.apiUrl}/${user.id}`,user);
+    return this.http.put<User>(`${this.apiUrl}/${user.id}`, user);
   }
 
-  getAllprenoms(): Observable<string[]>{
-    return of(['veronica', 'gabriel', 'sixtine']);
+  authenticateUser(user: {
+    username: string;
+    email: string;
+  }): Observable<User> {
+    return this.http.post<User>(`${this.apiUrl}/login`, user);
   }
+
 }

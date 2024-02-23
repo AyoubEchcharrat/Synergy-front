@@ -19,6 +19,8 @@ import { EditMessageComponent } from './messages/pages/edit-message/edit-message
 import {UsersModule} from "./users/users.module";
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     AddMessageComponent,
     EditMessageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, UsersModule, HttpClientModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, UsersModule, HttpClientModule, ReactiveFormsModule, ModalModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent],
 })
