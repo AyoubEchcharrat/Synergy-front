@@ -7,6 +7,7 @@ import {RouterLink} from "@angular/router";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ChannelsRoutingModule} from "./channels-routing.module";
 import {ModalModule} from "ngx-bootstrap/modal";
+import { ListChannelsComponent } from './pages/list-channels/list-channels.component';
 
 
 
@@ -14,7 +15,8 @@ import {ModalModule} from "ngx-bootstrap/modal";
   declarations: [
     ViewChannelComponent,
     AddChannelComponent,
-    EditChannelComponent
+    EditChannelComponent,
+    ListChannelsComponent
   ],
   imports: [
     CommonModule,

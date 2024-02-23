@@ -1,0 +1,7 @@
+<app-add-channel (channelAdd)="reloadContent()"></app-add-channel>
+
+<ul class="list-group">
+  <li *ngFor="let channel of channels" class="list-group-item">
+    {{ channel.name }}
+  </li>
+</ul>
