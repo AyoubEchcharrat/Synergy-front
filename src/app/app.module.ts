@@ -7,14 +7,13 @@ import { RegisterUsersComponent } from './users/pages/register-users/register-us
 import { LoginUsersComponent } from './users/pages/login-users/login-users.component';
 import { ProfilUsersComponent } from './users/pages/profil-users/profil-users.component';
 import { EditUsersComponent } from './users/pages/edit-users/edit-users.component';
-import { ViewChannelComponent } from './channels/pages/view-channel/view-channel.component';
-import { AddChannelComponent } from './channels/pages/add-channel/add-channel.component';
-import { EditChannelComponent } from './channels/pages/edit-channel/edit-channel.component';
 import { HeadersComponent } from './core/headers/headers.component';
 import { SidebarLeftComponent } from './core/sidebar-left/sidebar-left.component';
 import { ViewMessageComponent } from './messages/pages/view-message/view-message.component';
 import { AddMessageComponent } from './messages/pages/add-message/add-message.component';
 import { EditMessageComponent } from './messages/pages/edit-message/edit-message.component';
+import {ChannelsModule} from "./channels/channels.module";
+import { HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -29,7 +28,11 @@ import { EditMessageComponent } from './messages/pages/edit-message/edit-message
     AddMessageComponent,
     EditMessageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ChannelsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

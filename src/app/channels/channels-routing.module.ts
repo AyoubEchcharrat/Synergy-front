@@ -6,9 +6,9 @@ import {AddChannelComponent} from "./pages/add-channel/add-channel.component";
 import {EditChannelComponent} from "./pages/edit-channel/edit-channel.component";
 
 const routes: Routes = [
-  {path: ':id', component: ViewChannelComponent},
   {path: 'add', component: AddChannelComponent},
   {path: 'edit/:id', component: EditChannelComponent},
+  {path: 'view/:id', component: ViewChannelComponent},
 ];
 
 
