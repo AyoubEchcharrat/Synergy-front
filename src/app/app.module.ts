@@ -10,8 +10,10 @@ import { EditUsersComponent } from './users/pages/edit-users/edit-users.componen
 import { ViewMessageComponent } from './messages/pages/view-message/view-message.component';
 import { AddMessageComponent } from './messages/pages/add-message/add-message.component';
 import { EditMessageComponent } from './messages/pages/edit-message/edit-message.component';
+import { UsersModule } from './users/users.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { CoreModule } from './core/core.module';
 import { ChannelsModule } from './channels/channels.module';
 
@@ -29,9 +31,12 @@ import { ChannelsModule } from './channels/channels.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    UsersModule,
     HttpClientModule,
-    ChannelsModule,
+    ReactiveFormsModule,
+    ModalModule.forRoot(),
     CoreModule,
+    ChannelsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
