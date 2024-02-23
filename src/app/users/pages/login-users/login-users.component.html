@@ -36,11 +36,13 @@
         </form>
       </div>
       <div class="modal-footer custom-modal-footer">
-        <button type="button" class="btn btn-secondary">Annuler</button>
+        <button type="button"
+                class="btn btn-secondary"
+                (click)="modalRef?.hide()">Annuler</button>
         <button
           type="button"
           class="btn custom-confirm-button"
-          (click)="modalRef?.hide()"
+          (click)="login()"
         >
           Valider
         </button>

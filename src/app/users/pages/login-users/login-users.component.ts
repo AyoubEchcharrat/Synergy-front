@@ -37,7 +37,7 @@ export class LoginUsersComponent {
     }
   }
 
-  submit() {
+  login() {
     if (this.loginForm.valid) {
       const user = this.loginForm.value;
       this.usersService.authenticateUser(user).subscribe(
