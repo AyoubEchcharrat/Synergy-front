@@ -1,1 +1,46 @@
-<p>add-channel works!</p>
+<!-- Exemple d'un bouton pour ouvrir une modale -->
+<button type="button" class="btn btn-primary" (click)="openModal(template)">
+  Lancer modale
+</button>
+
+<ng-template #template>
+  <div class="modal-dialog m-0" role="document">
+    <div class="modal-content">
+      <div style="border-bottom: none" class="modal-header row p-0 m-4">
+        <h5 class="modal-title col-12 text-center">Ajouter un canal</h5>
+        <button
+          type="button"
+          style="position: absolute; top: 15px; right: 15px"
+          class="btn-close"
+          aria-label="Close"
+          (click)="modalRef?.hide()"
+        ></button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <input
+            id="name"
+            type="text"
+            class="w-100"
+            [formControl]="channelName"
+          />
+        </div>
+        <div
+          style="border-top: none"
+          class="modal-footer d-flex justify-content-center align-items-center"
+        >
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="modalRef?.hide()"
+          >
+            Annuler
+          </button>
+          <button type="button" class="btn btn-primary" (click)="addChannel()">
+            Ajouter
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
