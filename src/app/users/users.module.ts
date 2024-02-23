@@ -6,9 +6,18 @@ import { LoginUsersComponent } from './pages/login-users/login-users.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { UsersRoutingModule } from './users-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterUsersComponent } from './pages/register-users/register-users.component';
+import { EditUsersComponent } from './pages/edit-users/edit-users.component';
+import { ProfilUsersComponent } from './pages/profil-users/profil-users.component';
 
 @NgModule({
-  declarations: [ListUsersComponent, LoginUsersComponent],
+  declarations: [
+    ListUsersComponent,
+    LoginUsersComponent,
+    RegisterUsersComponent,
+    EditUsersComponent,
+    ProfilUsersComponent,
+  ],
   imports: [
     CommonModule,
     RouterLink,
@@ -16,6 +25,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     UsersRoutingModule,
     ModalModule.forRoot(),
   ],
-  exports: [ListUsersComponent, LoginUsersComponent],
+  exports: [
+    ListUsersComponent,
+    LoginUsersComponent,
+    RegisterUsersComponent,
+    EditUsersComponent,
+    ProfilUsersComponent,
+  ],
 })
 export class UsersModule {}

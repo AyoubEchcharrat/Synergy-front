@@ -1,6 +1,6 @@
 <button
   type="button"
-  class="btn custom-confirm-button"
+  class="btn custom-confirm-button mx-3"
   (click)="openModal(mainModale)"
 >
   Se connecter
@@ -36,14 +36,14 @@
         </form>
       </div>
       <div class="modal-footer custom-modal-footer">
+        <button type="button" class="btn btn-secondary">Annuler</button>
         <button
           type="button"
-          class="btn btn-secondary"
+          class="btn custom-confirm-button"
           (click)="modalRef?.hide()"
         >
           Valider
         </button>
-        <button type="button" class="btn custom-confirm-button">Annuler</button>
       </div>
     </div>
   </div>
