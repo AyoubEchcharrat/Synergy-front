@@ -1,17 +1,29 @@
+<div class="d-flex flex-column align-items-center">
+  <ul class="p-0 m-0">
+    <li *ngFor="let user of usersList" class="nav-item">
+      <a routerLink="" class="nav-link">{{ user.username }}</a>
+    </li>
+  </ul>
+</div>
+
 <!--<h1 class="text-center">Liste des Users</h1>-->
-<table *ngIf="usersList.length" class="table  table-striped  table-hover" style="max-width:1500px; margin: 40px auto">
+<!-- <table
+  *ngIf="usersList.length"
+  class="table table-striped table-hover"
+  style="max-width: 1500px; margin: 40px auto"
+>
   <thead>
-  <tr>
-    <th *ngFor="let header of headers">{{header}}</th>
-  </tr>
+    <tr>
+      <th *ngFor="let header of headers">{{ header }}</th>
+    </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let user of usersList">
-    <td>{{user.username}}</td>
+    <tr *ngFor="let user of usersList">
+      <td>{{ user.username }}</td> -->
 <!--    <td>-->
 <!--      <button routerLink="/users/edit/{{user.id}}" class="btn btn-info me-2">editer</button>-->
 <!--      <button (click)="delete(user.id)" class="btn btn-danger">supprimer</button>-->
 <!--    </td>-->
-  </tr>
+<!-- </tr>
   </tbody>
-</table>
+</table> -->
