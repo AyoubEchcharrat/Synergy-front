@@ -13,6 +13,11 @@ import { EditChannelComponent } from './channels/pages/edit-channel/edit-channel
 import { ViewMessageComponent } from './messages/pages/view-message/view-message.component';
 import { AddMessageComponent } from './messages/pages/add-message/add-message.component';
 import { EditMessageComponent } from './messages/pages/edit-message/edit-message.component';
+import {UsersModule} from "./users/users.module";
+import {HttpClientModule} from "@angular/common/http";
+import {ReactiveFormsModule} from "@angular/forms";
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 import { CoreModule } from './core/core.module';
 
@@ -30,7 +35,7 @@ import { CoreModule } from './core/core.module';
     AddMessageComponent,
     EditMessageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CoreModule],
+  imports: [BrowserModule, AppRoutingModule, UsersModule, HttpClientModule, ReactiveFormsModule, ModalModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent],
 })
