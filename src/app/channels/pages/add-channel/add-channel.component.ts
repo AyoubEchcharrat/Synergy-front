@@ -13,7 +13,7 @@ export class AddChannelComponent {
   title = 'synergy';
   modalRef?: BsModalRef;
   channelName: FormControl = new FormControl('');
-  @Output() channelAdd: EventEmitter<void> = new EventEmitter();
+
 
   constructor(
     private modalService: BsModalService,
@@ -35,7 +35,7 @@ export class AddChannelComponent {
     this.channelsService.addChannel(newChannel).subscribe({
       next: (value) => {
         this.channelsStoreService.addChannel(newChannel);
-        this.channelAdd.emit();
+        this.closeModal();
       },
     });
   }
