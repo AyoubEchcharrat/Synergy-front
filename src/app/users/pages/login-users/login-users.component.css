@@ -1,0 +1,27 @@
+.custom-modal-header {
+    background-color: #2b2d42;
+    /* Couleur d'arrière-plan de l'en-tête */
+    color: white;
+    /* Couleur du texte de l'en-tête */
+}
+
+.custom-modal-body {
+    background-color: #edf2f4;
+    /* Couleur d'arrière-plan du corps */
+    color: #5a5c69;
+    /* Couleur du texte du corps */
+}
+
+.custom-modal-footer {
+    background-color: #2b2d42;
+    /* Couleur d'arrière-plan du pied de page */
+    color: #6c757d;
+    /* Couleur du texte du pied de page */
+}
+
+.custom-confirm-button {
+    background-color: #e7287d;
+    /* Couleur d'arrière-plan du bouton de confirmation */
+    color: white;
+    /* Couleur du texte du bouton de confirmation */
+}
