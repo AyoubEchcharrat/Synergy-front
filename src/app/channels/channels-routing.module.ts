@@ -9,8 +9,8 @@ import { ListChannelsComponent } from './pages/list-channels/list-channels.compo
 const routes: Routes = [
   { path: 'add', component: AddChannelComponent },
   { path: 'edit/:id', component: EditChannelComponent },
-  { path: 'view/:id', component: ViewChannelComponent },
   { path: 'list', component: ListChannelsComponent },
+  { path: ':id', component: ViewChannelComponent },
 ];
 
 @NgModule({

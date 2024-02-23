@@ -9,7 +9,7 @@
       *ngFor="let channel of channels"
       class="nav-item"
     >
-      <a routerLink="" class="nav-link"># {{ channel.name }}</a>
+      <a routerLink="/channels/{{ channel.id }}" class="nav-link"># {{ channel.name }}</a>
     </li>
   </ul>
 </div>
