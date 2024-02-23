@@ -1,12 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {ViewChannelComponent} from "./pages/view-channel/view-channel.component";
+import {AddChannelComponent} from "./pages/add-channel/add-channel.component";
+import {EditChannelComponent} from "./pages/edit-channel/edit-channel.component";
+import {RouterLink} from "@angular/router";
+import {ReactiveFormsModule} from "@angular/forms";
+import {ChannelsRoutingModule} from "./channels-routing.module";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ViewChannelComponent,
+    AddChannelComponent,
+    EditChannelComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink,
+    ReactiveFormsModule,
+    ChannelsRoutingModule
+  ],
+  exports: [
+    ViewChannelComponent,
+    AddChannelComponent,
+    EditChannelComponent
   ]
 })
 export class ChannelsModule { }

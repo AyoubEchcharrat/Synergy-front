@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #edf2f4;
+}
+
+li {
+  list-style-type: none;
+}
+
+.black-bg {
+  background-color: #2b2d42;
+}
+
+.grey-bg {
+  background-color: #8d99ae;
+}
+
+.grey-color {
+  color: #8d99ae;
+}
+
+.white-bg {
+  background-color: #edf2f4;
+}
+
+.pink-bg {
+  background-color: #e7287d;
+}
