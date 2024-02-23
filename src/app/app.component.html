@@ -1,23 +1,21 @@
 test
 <!-- Exemple d'un bouton pour ouvrir une modale -->
-<button type="button" class="btn btn-primary" (click)="openModal(template)">Lancer modale</button>
+<button type="button" class="btn custom-confirm-button" (click)="openModal(mainModale)">Supprimer un élément</button>
 
-<ng-template #template>
+<ng-template #mainModale>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Titre de la Modale</h5>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef?.hide()">
-          <!--Enlevé car se déclenche tout seul => Croix en double-->
-          <!--          <span aria-hidden="true">&times;</span>-->
+      <div class="modal-header custom-modal-header">
+        <h5 class="modal-title">Validation Suppression</h5>
+        <button type="button" class="btn-close custom-close-button" aria-label="Close" (click)="modalRef?.hide()">
         </button>
       </div>
-      <div class="modal-body">
-        Merci de votre accueil ! ;-)
+      <div class="modal-body custom-modal-body">
+        Êtes vous sûr de vouloir supprimer cet élément ?
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="modalRef?.hide()">Fermer</button>
-        <button type="button" class="btn btn-primary">Sauvegarder les changements</button>
+      <div class="modal-footer custom-modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modalRef?.hide()">En fait non</button>
+        <button type="button" class="btn custom-confirm-button">J'en suis sûr !</button>
       </div>
     </div>
   </div>
