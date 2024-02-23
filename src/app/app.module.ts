@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterUsersComponent } from './users/pages/register-users/register-users.component';
-import { LoginUsersComponent } from './users/pages/login-users/login-users.component';
 import { ProfilUsersComponent } from './users/pages/profil-users/profil-users.component';
 import { EditUsersComponent } from './users/pages/edit-users/edit-users.component';
 import { ViewMessageComponent } from './messages/pages/view-message/view-message.component';
@@ -21,7 +20,6 @@ import { ChannelsModule } from './channels/channels.module';
   declarations: [
     AppComponent,
     RegisterUsersComponent,
-    LoginUsersComponent,
     ProfilUsersComponent,
     EditUsersComponent,
     ViewMessageComponent,
