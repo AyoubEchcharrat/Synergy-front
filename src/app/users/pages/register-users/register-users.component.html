@@ -1,31 +1,37 @@
-<form *ngIf="formUser" [formGroup]="formUser">
+<button type="button" class="btn custom-confirm-button" (click)="openModal(registerModale)">Créer un compte</button>
+<ng-template #registerModale>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header custom-modal-header">
 
-  <div class="mb-3">
-    <label for="username" class="form-label">Nom d'utilisateur</label>
-    <input formControlName="username" type="text" class="form-control" id="username" placeholder="username">
-    <span *ngIf="formUser.controls['username'].errors?.['required'] &&
-      formUser.controls['username'].touched" class="text-danger">Veuillez choisir un nom d'utilisateur
-    </span>
+        <h5 class="modal-title">Créer un compte</h5>
+
+        <button type="button" class="btn-close custom-close-button" aria-label="Close" (click)="modalRef?.hide()">
+        </button>
+      </div>
+      <div class="modal-body custom-modal-body">
+        <form>
+          <div class="form-group">
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" class="form-control" id="username" name="username">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Nom :</label>
+            <input type="text" class="form-control" id="lastName" name="lastName">
+          </div><div class="form-group">
+            <label for="firstName">Prénom :</label>
+            <input type="text" class="form-control" id="firstName" name="firstName">
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer custom-modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modalRef?.hide()">S'inscrire</button>
+        <button type="button" class="btn custom-confirm-button">Annuler</button>
+      </div>
+    </div>
   </div>
-
-  <div class="mb-3">
-    <label for="firstName" class="form-label">Nom</label>
-    <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="firstName">
-  </div>
-
-  <div class="mb-3">
-    <label for="lastName" class="form-label">Prénom</label>
-    <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="lastName">
-  </div>
-
-  <div class="mb-3">
-    <label for="email" class="form-label">Email</label>
-    <input formControlName="email" type="email" class="form-control" id="email" placeholder="email">
-    <span *ngIf="formUser.controls['email'].errors?.['required'] &&
-      formUser.controls['email'].touched" class="text-danger">Veuillez saisir un email
-    </span>
-  </div>
-
-  <button [disabled]="!formUser.valid" (click)="save()" type="button" class="btn btn-primary">Créer mon compte</button>
-
-</form>
+</ng-template>
