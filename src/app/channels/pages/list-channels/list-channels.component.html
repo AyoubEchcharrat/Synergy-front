@@ -1,7 +1,11 @@
-<app-add-channel (channelAdd)="reloadContent()"></app-add-channel>
+<div class="d-flex flex-column align-items-center">
+  <app-add-channel (channelAdd)="reloadContent()"></app-add-channel>
 
-<ul class="list-group">
-  <li *ngFor="let channel of channels" class="list-group-item">
-    {{ channel.name }}
-  </li>
-</ul>
+  <hr class="w-100 m-0 grey-color my-2" />
+
+  <ul class="p-0 m-0">
+    <li *ngFor="let channel of channels" class="nav-item">
+      <a routerLink="" class="nav-link"># {{ channel.name }}</a>
+    </li>
+  </ul>
+</div>
