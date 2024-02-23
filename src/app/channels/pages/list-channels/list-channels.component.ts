@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ChannelsService } from '../../services/channels.service';
 import { Channel } from '../../../core/models/channels';
 
@@ -7,9 +7,13 @@ import { Channel } from '../../../core/models/channels';
   templateUrl: './list-channels.component.html',
   styleUrl: './list-channels.component.css',
 })
-export class ListChannelsComponent {
+export class ListChannelsComponent implements OnInit{
   channels!: Channel[];
   constructor(private channelService: ChannelsService) {}
+
+  ngOnInit(): void {
+    this.getAllChannels();
+  }
 
   getAllChannels(): void {
     this.channelService.getAllChannels().subscribe({
@@ -23,4 +27,6 @@ export class ListChannelsComponent {
   }
 
   reloadContent() {}
+
+
 }
