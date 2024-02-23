@@ -1,18 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChannelsService } from '../../services/channels.service';
 import { Channel } from '../../../core/models/channels';
-import {Subscription} from "rxjs";
-import {ChannelsStoreService} from "../../services/channels-store.service";
+import { Subscription } from 'rxjs';
+import { ChannelsStoreService } from '../../services/channels-store.service';
 
 @Component({
   selector: 'app-list-channels',
   templateUrl: './list-channels.component.html',
   styleUrl: './list-channels.component.css',
 })
-export class ListChannelsComponent implements OnInit{
+export class ListChannelsComponent implements OnInit, OnDestroy {
   channels!: Channel[];
-  constructor(private channelService: ChannelsService, private channelStore: ChannelsStoreService) {}
-  private channelsSubscription! : Subscription;
+  hover!: boolean;
+
+  constructor(
+    private channelService: ChannelsService,
+    private channelStore: ChannelsStoreService
+  ) {}
+  private channelsSubscription!: Subscription;
 
   ngOnInit(): void {
     this.getAllChannels();
@@ -28,8 +33,18 @@ export class ListChannelsComponent implements OnInit{
       },
     });
 
-    this.channelStore.channel$.subscribe(channels => this.channels = channels);
+    this.channelStore.channel$.subscribe(
+      (channels) => (this.channels = channels)
+    );
   }
 
-
+  addStyleHover(event: any) {
+    event.target.classList.add('hover');
+  }
+  removeStyleHover(event: any) {
+    event.target.classList.remove('hover');
+  }
+  ngOnDestroy(): void {
+    this.channelsSubscription.unsubscribe();
+  }
 }

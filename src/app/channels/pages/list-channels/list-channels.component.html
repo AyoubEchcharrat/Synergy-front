@@ -2,9 +2,16 @@
   <app-add-channel></app-add-channel>
   <hr class="w-100 m-0 grey-color my-2" />
 
-  <ul class="m-0">
-    <li *ngFor="let channel of channels" class="nav-item">
+  <ul class="p-0 m-0">
+    <li
+      (mouseenter)="addStyleHover($event)"
+      (mouseleave)="removeStyleHover($event)"
+      *ngFor="let channel of channels"
+      class="nav-item"
+    >
       <a routerLink="" class="nav-link"># {{ channel.name }}</a>
     </li>
   </ul>
 </div>
+<!-- (mouseenter)="mouseenterChannel()"
+        (mouseleave)="mouseleaveChannel()" -->
