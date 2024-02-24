@@ -1,9 +1,9 @@
-import {Component, TemplateRef} from '@angular/core';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
-import {ChannelsService} from '../../services/channels.service';
-import {FormControl} from '@angular/forms';
-import {ChannelsStoreService} from '../../services/channels-store.service';
-import {Router} from "@angular/router";
+import { Component, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ChannelsService } from '../../services/channels.service';
+import { FormControl } from '@angular/forms';
+import { ChannelsStoreService } from '../../services/channels-store.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-channel',
@@ -14,7 +14,6 @@ export class AddChannelComponent {
   title = 'synergy';
   modalRef?: BsModalRef;
   channelName: FormControl = new FormControl('');
-
 
   constructor(
     private modalService: BsModalService,
@@ -41,5 +40,11 @@ export class AddChannelComponent {
         this.router.navigate(['']);
       },
     });
+  }
+  addStyleHover(event: any) {
+    event.target.classList.add('hover');
+  }
+  removeStyleHover(event: any) {
+    event.target.classList.remove('hover');
   }
 }

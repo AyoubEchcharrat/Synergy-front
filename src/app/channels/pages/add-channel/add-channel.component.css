@@ -1,0 +1,13 @@
+.hover {
+  color: white;
+}
+
+#svg-icon {
+  transition: filter 0.3s ease; /* Smooth transition for the filter effect */
+}
+
+#svg-icon:hover {
+  filter: drop-shadow(
+    0 0 0.25rem rgba(255, 255, 255, 0.2)
+  ); /* Add drop shadow on hover */
+}
