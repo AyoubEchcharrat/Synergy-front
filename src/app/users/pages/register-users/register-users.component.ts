@@ -1,9 +1,9 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from '../../services/users.service';
-import { UsersStoreService } from '../../services/users-store.service';
-import { Router } from '@angular/router';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import {Component, TemplateRef} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UsersService} from '../../services/users.service';
+import {UsersStoreService} from '../../services/users-store.service';
+import {Router} from '@angular/router';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-register-users',
@@ -11,9 +11,14 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./register-users.component.css'],
 })
 export class RegisterUsersComponent {
-  formUser!: FormGroup;
+  // formUser!: FormGroup;
   modalRef?: BsModalRef;
   registerForm!: FormGroup;
+  username: FormControl = new FormControl('');
+  lastName: FormControl = new FormControl('');
+  firstName: FormControl = new FormControl('');
+  email: FormControl = new FormControl('');
+
 
   constructor(
     private modalService: BsModalService,
@@ -44,10 +49,17 @@ export class RegisterUsersComponent {
   }
 
   save() {
-    const newUser = { ...this.formUser.value };
-    this.usersService.addUser(newUser).subscribe((v) => {
+    const newUser = {
+      // ...this.registerForm.value
+      username: this.username.value,
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
+      email: this.email.value,
+    };
+    this.usersService.addUser(newUser).subscribe(() => {
       this.usersStoreService.addUser(newUser);
-      this.router.navigate(['/users']);
+      this.closeModal();
+      this.router.navigate(['']);
     });
   }
 }

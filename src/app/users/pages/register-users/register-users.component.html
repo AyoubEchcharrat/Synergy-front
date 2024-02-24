@@ -20,13 +20,14 @@
       </div>
       <div class="modal-body custom-modal-body">
         <form>
-          <div class="form-group">
+          <div class="form-group" >
             <label for="username">Nom d'utilisateur :</label>
             <input
               type="text"
               class="form-control"
               id="username"
               name="username"
+              [formControl]="username"
             />
           </div>
           <div class="form-group">
@@ -36,6 +37,7 @@
               class="form-control"
               id="lastName"
               name="lastName"
+              [formControl]="lastName"
             />
           </div>
           <div class="form-group">
@@ -45,11 +47,17 @@
               class="form-control"
               id="firstName"
               name="firstName"
+              [formControl]="firstName"
             />
           </div>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" />
+            <input type="email"
+                   class="form-control"
+                   id="email"
+                   name="email"
+                   [formControl]="email"
+            />
           </div>
         </form>
       </div>
@@ -62,9 +70,9 @@
           Annuler
         </button>
         <button
-          type="button"
+          type="submit"
           class="btn custom-confirm-button"
-          (click)="modalRef?.hide()"
+          (click)="save()"
         >
           S'inscrire
         </button>

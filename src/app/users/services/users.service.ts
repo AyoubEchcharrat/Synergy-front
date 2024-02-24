@@ -8,6 +8,7 @@ import { User } from '../../core/models/users';
 })
 export class UsersService {
   apiUrl: string = 'http://localhost:8080/api/users';
+  apiLoginUrl: string = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) {}
 
@@ -32,10 +33,10 @@ export class UsersService {
   }
 
   authenticateUser(user: {
-    username: string;
-    email: string;
+    username?: string;
+    email?: string;
   }): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/login`, user);
+    return this.http.post<User>(`${this.apiLoginUrl}/login`, user);
   }
 
 }
