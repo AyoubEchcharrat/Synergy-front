@@ -16,6 +16,7 @@ export class LoginUsersComponent {
   modalRef?: BsModalRef;
   username: FormControl = new FormControl('');
   email: FormControl = new FormControl('');
+  userFound: boolean = true;
 
   constructor(
     private modalService: BsModalService,
@@ -42,7 +43,6 @@ export class LoginUsersComponent {
     };
     this.usersService.authenticateUser(user).subscribe(
       (response) => {
-        // console.log(response);
         if (typeof sessionStorage !== 'undefined' && response) {
           sessionStorage.setItem('currentUser', JSON.stringify(response));
         } else {
@@ -50,11 +50,13 @@ export class LoginUsersComponent {
             'sessionStorage is not available or response/response.username is undefined'
           );
         }
+        this.userFound = true; // Marquer l'utilisateur comme trouvé
         this.closeModal();
         this.router.navigate(['']);
       },
       (error) => {
         console.error(error);
+        this.userFound = false; // Marquer l'utilisateur comme non trouvé en cas d'erreur
       }
     );
   }

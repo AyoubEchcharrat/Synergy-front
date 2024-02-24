@@ -1,8 +1,6 @@
-<button
-  type="button"
-  class="btn custom-button font-weight-500 mx-0 p-1"
-  (click)="openModal(mainModale)"
->
+<div *ngIf="!userFound" class="alert alert-danger">Utilisateur inconnu</div>
+
+<button type="button" class="btn custom-button font-weight-500 mx-0 p-1" (click)="openModal(mainModale)">
   Se connecter
 </button>
 
@@ -11,49 +9,29 @@
     <div class="modal-content" style="background-color: purple !important">
       <div class="modal-header custom-modal-header">
         <h5 class="modal-title">Connexion</h5>
-        <button
-          type="button"
-          class="btn-close custom-close-button"
-          aria-label="Close"
-          (click)="modalRef?.hide()"
-        ></button>
+        <button type="button" class="btn-close custom-close-button" aria-label="Close"
+          (click)="modalRef?.hide()"></button>
       </div>
       <div class="modal-body custom-modal-body">
         <form>
           <div class="form-group">
             <label for="username">Nom d'utilisateur:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="username"
-              name="username"
-              [formControl]="username"
-            />
+            <input type="text" class="form-control" id="username" name="username" [formControl]="username" />
           </div>
           <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email"
-                   class="form-control"
-                   id="email"
-                   name="email"
-                   [formControl]="email"
-            />
+            <input type="email" class="form-control" id="email" name="email" [formControl]="email" />
           </div>
+
+          <!-- Affichage du message d'erreur Utilisateur inconnu -->
+          <div *ngIf="!userFound" class="alert alert-danger">Utilisateur inconnu</div>
         </form>
       </div>
       <div class="modal-footer custom-modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          (click)="modalRef?.hide()"
-        >
+        <button type="button" class="btn btn-secondary" (click)="modalRef?.hide()">
           Annuler
         </button>
-        <button
-          type="submit"
-          class="btn custom-confirm-button"
-          (click)="login()"
-        >
+        <button type="submit" class="btn custom-confirm-button" (click)="login()">
           Valider
         </button>
       </div>
