@@ -12,4 +12,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.connected = this.currentUser != undefined;
   }
+
+  logout() {
+    sessionStorage.removeItem('currentUser');
+    this.connected = false;
+  }
 }
