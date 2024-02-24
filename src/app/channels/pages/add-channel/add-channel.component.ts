@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Output, TemplateRef } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { ChannelsService } from '../../services/channels.service';
-import { FormControl } from '@angular/forms';
-import { ChannelsStoreService } from '../../services/channels-store.service';
+import {Component, TemplateRef} from '@angular/core';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {ChannelsService} from '../../services/channels.service';
+import {FormControl} from '@angular/forms';
+import {ChannelsStoreService} from '../../services/channels-store.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-channel',
@@ -18,7 +19,8 @@ export class AddChannelComponent {
   constructor(
     private modalService: BsModalService,
     private channelsService: ChannelsService,
-    private channelsStoreService: ChannelsStoreService
+    private channelsStoreService: ChannelsStoreService,
+    private router: Router
   ) {}
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -33,9 +35,10 @@ export class AddChannelComponent {
       name: this.channelName.value,
     };
     this.channelsService.addChannel(newChannel).subscribe({
-      next: (value) => {
+      next: () => {
         this.channelsStoreService.addChannel(newChannel);
         this.closeModal();
+        this.router.navigate(['']);
       },
     });
   }
