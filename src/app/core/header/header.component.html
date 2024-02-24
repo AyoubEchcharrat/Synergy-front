@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-dark black-bg">
+<nav id="header-wrapper" class="navbar navbar-expand-sm navbar-dark black-bg">
   <div class="container-fluid">
     <a class="navbar-brand mx-3" routerLink="">
       <img
@@ -11,9 +11,13 @@
     </a>
     <ul class="navbar-nav justify-content-end">
       <li class="nav-item d-flex">
-        <!-- <a routerLink="clients" class="nav-link">Ayoub</a> -->
-        <app-login-users class="nav-link"></app-login-users>
-        <app-register-users class="nav-link"></app-register-users>
+        <a *ngIf="connected; else elseBlock" class="nav-link">{{
+          currentUser.username
+        }}</a>
+        <ng-template #elseBlock
+          ><app-login-users class="nav-link"></app-login-users>
+          <app-register-users class="nav-link"></app-register-users
+        ></ng-template>
       </li>
     </ul>
   </div>

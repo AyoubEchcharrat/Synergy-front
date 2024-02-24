@@ -1,10 +1,10 @@
-import {Component, TemplateRef} from '@angular/core';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
-import {FormBuilder, FormControl} from '@angular/forms';
-import {UsersService} from '../../services/users.service';
-import {Router} from "@angular/router";
-import {UsersStoreService} from "../../services/users-store.service";
-import {User} from "../../../core/models/users";
+import { Component, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { UsersService } from '../../services/users.service';
+import { Router } from '@angular/router';
+import { UsersStoreService } from '../../services/users-store.service';
+import { User } from '../../../core/models/users';
 
 @Component({
   selector: 'app-login-users',
@@ -23,8 +23,7 @@ export class LoginUsersComponent {
     private usersService: UsersService,
     private usersStoreService: UsersStoreService,
     private router: Router
-  ) {
-  }
+  ) {}
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -37,14 +36,19 @@ export class LoginUsersComponent {
   }
 
   login() {
-    const user: User = {username: this.username.value, email: this.email.value};
+    const user: User = {
+      username: this.username.value,
+      email: this.email.value,
+    };
     this.usersService.authenticateUser(user).subscribe(
       (response) => {
-        console.log(response);
-        if (typeof sessionStorage !== 'undefined' && response && response.username) {
-          sessionStorage.setItem('currentUser', response.username);
+        // console.log(response);
+        if (typeof sessionStorage !== 'undefined' && response) {
+          sessionStorage.setItem('currentUser', JSON.stringify(response));
         } else {
-          console.error('sessionStorage is not available or response/response.username is undefined');
+          console.error(
+            'sessionStorage is not available or response/response.username is undefined'
+          );
         }
         this.closeModal();
         this.router.navigate(['']);

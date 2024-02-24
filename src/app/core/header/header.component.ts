@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from '../models/users';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
-export class HeaderComponent {
-
+export class HeaderComponent implements OnInit {
+  @Input() currentUser!: User;
+  connected!: boolean;
+  ngOnInit(): void {
+    this.connected = this.currentUser != undefined;
+  }
 }
