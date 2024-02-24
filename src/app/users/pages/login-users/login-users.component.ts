@@ -1,7 +1,11 @@
-import { Component, TemplateRef } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from '../../services/users.service';
+import {Component, TemplateRef} from '@angular/core';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {FormBuilder, FormControl} from '@angular/forms';
+import {UsersService} from '../../services/users.service';
+import {Router} from "@angular/router";
+import {UsersStoreService} from "../../services/users-store.service";
+import {User} from "../../../core/models/users";
+
 @Component({
   selector: 'app-login-users',
   templateUrl: './login-users.component.html',
@@ -10,21 +14,16 @@ import { UsersService } from '../../services/users.service';
 export class LoginUsersComponent {
   title = 'synergy';
   modalRef?: BsModalRef;
-  loginForm!: FormGroup;
+  username: FormControl = new FormControl('');
+  email: FormControl = new FormControl('');
 
   constructor(
     private modalService: BsModalService,
     private fb: FormBuilder,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private usersStoreService: UsersStoreService,
+    private router: Router
   ) {
-    this.createForm();
-  }
-
-  createForm() {
-    this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-    });
   }
 
   openModal(template: TemplateRef<any>) {
@@ -38,17 +37,16 @@ export class LoginUsersComponent {
   }
 
   login() {
-    if (this.loginForm.valid) {
-      const user = this.loginForm.value;
-      this.usersService.authenticateUser(user).subscribe(
-        (response) => {
-          console.log(response);
-          this.closeModal();
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-    }
+    const user: User = {username: this.username.value, email: this.email.value};
+    this.usersService.authenticateUser(user).subscribe(
+      (response) => {
+        console.log(response);
+        this.closeModal();
+        this.router.navigate(['']);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   }
 }
