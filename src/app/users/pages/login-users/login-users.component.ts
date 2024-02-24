@@ -41,6 +41,11 @@ export class LoginUsersComponent {
     this.usersService.authenticateUser(user).subscribe(
       (response) => {
         console.log(response);
+        if (typeof sessionStorage !== 'undefined' && response && response.username) {
+          sessionStorage.setItem('currentUser', response.username);
+        } else {
+          console.error('sessionStorage is not available or response/response.username is undefined');
+        }
         this.closeModal();
         this.router.navigate(['']);
       },
