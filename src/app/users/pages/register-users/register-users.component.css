@@ -1,27 +1,47 @@
 .custom-modal-header {
-    background-color: #2b2d42;
-    /* Couleur d'arrière-plan de l'en-tête */
-    color: white;
-    /* Couleur du texte de l'en-tête */
+  background-color: #2b2d42;
+  /* Couleur d'arrière-plan de l'en-tête */
+  color: white;
+  /* Couleur du texte de l'en-tête */
 }
 
 .custom-modal-body {
-    background-color: #edf2f4;
-    /* Couleur d'arrière-plan du corps */
-    color: #5a5c69;
-    /* Couleur du texte du corps */
+  background-color: #edf2f4;
+  /* Couleur d'arrière-plan du corps */
+  color: #5a5c69;
+  /* Couleur du texte du corps */
 }
 
 .custom-modal-footer {
-    background-color: #2b2d42;
-    /* Couleur d'arrière-plan du pied de page */
-    color: #6c757d;
-    /* Couleur du texte du pied de page */
+  background-color: #2b2d42;
+  /* Couleur d'arrière-plan du pied de page */
+  color: #6c757d;
+  /* Couleur du texte du pied de page */
 }
 
 .custom-confirm-button {
-    background-color: #e7287d;
-    /* Couleur d'arrière-plan du bouton de confirmation */
-    color: white;
-    /* Couleur du texte du bouton de confirmation */
+  background-color: #e7287d;
+  /* Couleur d'arrière-plan du bouton de confirmation */
+  color: white;
+  /* Couleur du texte du bouton de confirmation */
+}
+
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.custom-button {
+  display: inline-block;
+  color: aliceblue;
+  padding-bottom: 2px;
+  background-image: linear-gradient(#ffffff 0 0);
+  background-position: 0 100%; /*OR bottom left*/
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s, background-position 0s 0.3s; /*change after the size immediately*/
+}
+
+.custom-button:hover {
+  background-position: 100% 100%; /*OR bottom right*/
+  background-size: 100% 2px;
 }

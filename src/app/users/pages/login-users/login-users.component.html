@@ -1,6 +1,6 @@
 <button
   type="button"
-  class="btn custom-confirm-button mx-3"
+  class="btn custom-button font-weight-500 mx-0 p-1"
   (click)="openModal(mainModale)"
 >
   Se connecter
@@ -36,9 +36,13 @@
         </form>
       </div>
       <div class="modal-footer custom-modal-footer">
-        <button type="button"
-                class="btn btn-secondary"
-                (click)="modalRef?.hide()">Annuler</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="modalRef?.hide()"
+        >
+          Annuler
+        </button>
         <button
           type="button"
           class="btn custom-confirm-button"

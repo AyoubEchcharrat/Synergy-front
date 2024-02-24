@@ -1,9 +1,9 @@
 <button
   type="button"
-  class="btn custom-confirm-button mx-3"
+  class="btn custom-button font-weight-500 mx-0 p-1"
   (click)="openModal(registerModale)"
 >
-  Créer un compte
+  S'inscrire
 </button>
 <ng-template #registerModale>
   <div class="modal-dialog m-0" role="document">
@@ -55,8 +55,12 @@
       </div>
       <div class="modal-footer custom-modal-footer">
         <button
-          type="button" class="btn btn-secondary"
-          (click)="modalRef?.hide()">Annuler</button>
+          type="button"
+          class="btn btn-secondary"
+          (click)="modalRef?.hide()"
+        >
+          Annuler
+        </button>
         <button
           type="button"
           class="btn custom-confirm-button"
