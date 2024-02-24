@@ -56,10 +56,12 @@ export class RegisterUsersComponent {
       lastName: this.lastName.value,
       email: this.email.value,
     };
-    this.usersService.addUser(newUser).subscribe(() => {
+    this.usersService.addUser(newUser).subscribe({
+       next: () => {
       this.usersStoreService.addUser(newUser);
       this.closeModal();
       this.router.navigate(['']);
+       }
     });
   }
 }
