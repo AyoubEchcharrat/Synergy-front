@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CoreModule } from './core/core.module';
 import { ChannelsModule } from './channels/channels.module';
+import {ErrorsModule} from "./errors/errors.module";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ChannelsModule } from './channels/channels.module';
     ReactiveFormsModule,
     ModalModule.forRoot(),
     CoreModule,
+    ErrorsModule,
     ChannelsModule,
   ],
   providers: [],

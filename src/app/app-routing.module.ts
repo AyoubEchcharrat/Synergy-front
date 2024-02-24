@@ -15,6 +15,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./users/users.module').then((m) => m.UsersModule),
   },
+  {path: '**', loadChildren: () => import('./errors/errors.module').then(m => m.ErrorsModule)},
 ];
 
 @NgModule({
