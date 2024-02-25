@@ -29,10 +29,15 @@ export class ViewChannelComponent implements OnInit {
 
           for (let msg of data) {
             this.messages = [...this.messages, this.convertMessageToViewMessage(msg)];
+            this.messagesStoreService.messages = this.messages;
           }
 
           console.log(this.messages);
         });
+
+      this.messagesStoreService.messages$.subscribe(
+        (messages) => (this.messages = messages)
+      );
     }
   }
 

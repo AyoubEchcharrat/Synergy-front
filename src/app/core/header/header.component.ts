@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit {
   logout() {
     sessionStorage.removeItem('currentUser');
     this.connected = false;
-    this.router.navigate(['']);
+    this.router.navigate(['']).then(() => {
+      window.location.reload();
+    });
   }
 }

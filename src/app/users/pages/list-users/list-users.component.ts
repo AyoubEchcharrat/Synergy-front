@@ -3,6 +3,7 @@ import { User } from '../../../core/models/users';
 import { Subscription } from 'rxjs';
 import { UsersService } from '../../services/users.service';
 import { UsersStoreService } from '../../services/users-store.service';
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-list-users',
   templateUrl: './list-users.component.html',
@@ -13,6 +14,7 @@ export class ListUsersComponent implements OnInit, OnDestroy {
   usersList: User[] = [];
   hover!: boolean;
   @Input() currentUser!: User;
+  connected!: boolean;
 
   private userSubscription!: Subscription;
 
@@ -22,6 +24,8 @@ export class ListUsersComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.connected = this.currentUser != undefined;
+
     this.userSubscription = this.usersService.getAllUsers().subscribe({
       next: (users: User[]) => {
         this.usersStoreService.users = users;

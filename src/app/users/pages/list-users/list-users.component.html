@@ -6,8 +6,10 @@
       *ngFor="let user of usersList"
       class="nav-item"
     >
-      <a *ngIf="currentUser" routerLink="messages/{{user.id}}" class="nav-link">{{ user.username }}</a>
-      <a *ngIf="!currentUser" class="nav-link">{{ user.username }}</a>
+      <a *ngIf="connected" routerLink="messages/{{user.id}}" class="nav-link">{{ user.username }}
+        <span *ngIf="currentUser && currentUser.id == user.id" class="">(You)</span>
+      </a>
+      <a *ngIf="!connected" class="nav-link">{{ user.username }}</a>
     </li>
   </ul>
 </div>
