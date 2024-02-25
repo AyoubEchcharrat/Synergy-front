@@ -1,7 +1,7 @@
 <div id="app-container" class="position-relative">
   <app-header [currentUser]="currentUser"></app-header>
   <div class="d-flex flex-grow-1 position-relative">
-    <app-sidebar></app-sidebar>
+    <app-sidebar [currentUser]="currentUser"></app-sidebar>
     <div id="page-content-wrapper" class="white-bg" style="flex-grow: 1">
       <router-outlet></router-outlet>
     </div>

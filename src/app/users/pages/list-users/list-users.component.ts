@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { User } from '../../../core/models/users';
 import { Subscription } from 'rxjs';
 import { UsersService } from '../../services/users.service';
@@ -12,6 +12,7 @@ export class ListUsersComponent implements OnInit, OnDestroy {
   headers: string[] = ['user name'];
   usersList: User[] = [];
   hover!: boolean;
+  @Input() currentUser!: User;
 
   private userSubscription!: Subscription;
 
@@ -21,6 +22,7 @@ export class ListUsersComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    console.log(this.currentUser);
     this.userSubscription = this.usersService.getAllUsers().subscribe({
       next: (users: User[]) => {
         this.usersStoreService.users = users;
@@ -47,4 +49,5 @@ export class ListUsersComponent implements OnInit, OnDestroy {
   //     this.usersStoreService.deleteUserById(id);
   //   })
   // }
+
 }

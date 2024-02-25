@@ -15,6 +15,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./users/users.module').then((m) => m.UsersModule),
   },
+  {
+    path: 'messages',
+    loadChildren: () =>
+      import('./messages/messages.module').then((m) => m.MessagesModule),
+  },
   {path: '**', loadChildren: () => import('./errors/errors.module').then(m => m.ErrorsModule)},
 ];
 
