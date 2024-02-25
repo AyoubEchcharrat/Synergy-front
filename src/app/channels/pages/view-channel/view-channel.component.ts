@@ -49,7 +49,7 @@ export class ViewChannelComponent implements OnInit {
        sender: message.sender.username,
        creationDate: creationDate,
        updateDate: updateDate,
-       icon: '',
+       icon: message.sender.firstName?.charAt(0)! + message.sender.lastName?.charAt(0)!,
        upvoters: message.upvoters.length,
        downvoters: message.downvoters.length
      };

@@ -1,1 +1,33 @@
-<p>view-message works!</p>
+<div id="message-containter">
+  <div id="message-icon">
+    <div id="message-icon-circle">
+      {{message.icon}}
+    </div>
+  </div>
+  <div id="message-texts" style="background-color:red">
+    <div id="message-info" style="background-color: blue">
+      <p id="message-info-sender">
+        {{message.sender}}
+      </p>
+      <p id="message-info-creation_date">
+        {{message.creationDate}}
+        <span *ngIf="message.updateDate">(modifié {{message.updateDate}})</span>
+      </p>
+    </div>
+    <div id="message-content">
+      {{message.content}}
+    </div>
+  </div>
+
+  <div id="votes">
+    <div id="upvoters-container" (click)="toggleUpvote()">
+      <i class="bi bi-hand-thumbs-up-fill"></i>
+      <span *ngIf="message.upvoters > 0">{{message.upvoters}}</span>
+    </div>
+    <div id="downvoters-container" (click)="toggleDownvote()">
+      <i class="bi bi-hand-thumbs-down-fill"></i>
+      <span *ngIf="message.downvoters > 0">{{message.downvoters}}</span>
+    </div>
+  </div>
+
+</div>

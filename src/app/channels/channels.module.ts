@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ChannelsRoutingModule } from './channels-routing.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ListChannelsComponent } from './pages/list-channels/list-channels.component';
+import {MessagesModule} from "../messages/messages.module";
 
 @NgModule({
   declarations: [
@@ -16,13 +17,14 @@ import { ListChannelsComponent } from './pages/list-channels/list-channels.compo
     EditChannelComponent,
     ListChannelsComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterLink,
-    ReactiveFormsModule,
-    ChannelsRoutingModule,
-    ModalModule.forRoot(),
-  ],
+    imports: [
+        CommonModule,
+        RouterLink,
+        ReactiveFormsModule,
+        ChannelsRoutingModule,
+        ModalModule.forRoot(),
+        MessagesModule,
+    ],
   exports: [
     ViewChannelComponent,
     AddChannelComponent,
