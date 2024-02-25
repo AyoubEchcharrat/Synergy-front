@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { ChannelsService } from '../../services/channels.service';
 import { Channel } from '../../../core/models/channels';
 import { Subscription } from 'rxjs';
 import { ChannelsStoreService } from '../../services/channels-store.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-channels',
@@ -12,12 +13,13 @@ import { ChannelsStoreService } from '../../services/channels-store.service';
 export class ListChannelsComponent implements OnInit, OnDestroy {
   channels!: Channel[];
   hover!: boolean;
+  private channelsSubscription!: Subscription;
 
   constructor(
     private channelService: ChannelsService,
-    private channelStore: ChannelsStoreService
+    private channelStore: ChannelsStoreService,
+    private activatedRoute: ActivatedRoute
   ) {}
-  private channelsSubscription!: Subscription;
 
   ngOnInit(): void {
     this.getAllChannels();
@@ -32,7 +34,6 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
         console.log(err);
       },
     });
-
     this.channelStore.channel$.subscribe(
       (channels) => (this.channels = channels)
     );

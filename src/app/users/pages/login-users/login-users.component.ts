@@ -52,8 +52,9 @@ export class LoginUsersComponent {
         }
         this.userFound = true; // Marquer l'utilisateur comme trouvé
         this.closeModal();
-        this.router.navigate(['']);
-        window.location.reload();
+        this.router.navigate(['']).then(() => {
+          window.location.reload();
+        });
       },
       (error) => {
         console.error(error);

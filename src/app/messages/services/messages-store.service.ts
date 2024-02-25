@@ -6,8 +6,9 @@ import { ViewMessage } from '../../core/models/view-message';
   providedIn: 'root',
 })
 export class MessagesStoreService {
-  readonly _messages: BehaviorSubject<ViewMessage[]> =
-    new BehaviorSubject<ViewMessage[]>([]);
+  readonly _messages: BehaviorSubject<ViewMessage[]> = new BehaviorSubject<
+    ViewMessage[]
+  >([]);
   readonly messages$: Observable<ViewMessage[]> = this._messages.asObservable();
 
   get messages(): ViewMessage[] {
@@ -16,6 +17,7 @@ export class MessagesStoreService {
   set messages(val: ViewMessage[]) {
     this._messages.next(val);
   }
+
   addMessage(newMessage: ViewMessage) {
     this.messages = [...this.messages, newMessage];
   }
