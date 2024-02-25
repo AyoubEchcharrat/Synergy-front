@@ -6,7 +6,7 @@
       *ngFor="let user of usersList"
       class="nav-item"
     >
-      <a routerLink="messages/{{currentUser.id}}/{{user.id}}" class="nav-link">{{ user.username }}</a>
+      <a routerLink="messages/{{user.id}}" class="nav-link">{{ user.username }}</a>
     </li>
   </ul>
 </div>

@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {MessagesStoreService} from "../../services/messages-store.service";
 import {ViewMessage} from "../../../core/models/view-message";
 import {PrivateMessage} from "../../../core/models/private-messages";
+import {User} from "../../../core/models/users";
 
 @Component({
   selector: 'app-view-conversation',
@@ -20,22 +21,24 @@ export class ViewConversationComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.idCurrent = Number(this.activatedRoute.snapshot.paramMap.get('idCurrent'));
-    this.idRecipient = Number(this.activatedRoute.snapshot.paramMap.get('idRecipient'));
+    if(sessionStorage.getItem('currentUser')){
+      const currentUser: User = JSON.parse(sessionStorage.getItem('currentUser')!)
+      this.idCurrent = currentUser.id!;
+      this.idRecipient = Number(this.activatedRoute.snapshot.paramMap.get('idRecipient'));
 
-    if (this.idCurrent && this.idRecipient) {
-      this.viewMessageService
-        .getAllConversationMessages(this.idCurrent,this.idRecipient)
-        .subscribe((data) => {
+      if (this.idCurrent && this.idRecipient) {
+        this.viewMessageService
+          .getAllConversationMessages(this.idCurrent,this.idRecipient)
+          .subscribe((data) => {
 
-          for (let msg of data) {
-            this.messages = [...this.messages, this.convertMessageToViewMessage(msg)];
-          }
+            for (let msg of data) {
+              this.messages = [...this.messages, this.convertMessageToViewMessage(msg)];
+            }
 
-          console.log(this.messages);
-        });
+            console.log(this.messages);
+          });
+      }
     }
-
   }
 
   convertMessageToViewMessage(message: PrivateMessage): ViewMessage {

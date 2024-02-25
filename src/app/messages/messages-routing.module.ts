@@ -5,7 +5,7 @@ import {ViewConversationComponent} from "./pages/view-conversation/view-conversa
 
 
 const routes: Routes = [
-  { path: ':idCurrent/:idRecipient', component: ViewConversationComponent },
+  { path: ':idRecipient', component: ViewConversationComponent },
 ];
 
 @NgModule({
