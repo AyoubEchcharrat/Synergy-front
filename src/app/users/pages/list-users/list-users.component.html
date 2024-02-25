@@ -1,12 +1,13 @@
 <div class="d-flex flex-column align-items-start">
-  <ul *ngIf="currentUser" class="m-0">
+  <ul class="m-0">
     <li
       (mouseenter)="addStyleHover($event)"
       (mouseleave)="removeStyleHover($event)"
       *ngFor="let user of usersList"
       class="nav-item"
     >
-      <a routerLink="messages/{{user.id}}" class="nav-link">{{ user.username }}</a>
+      <a *ngIf="currentUser" routerLink="messages/{{user.id}}" class="nav-link">{{ user.username }}</a>
+      <a *ngIf="!currentUser" class="nav-link">{{ user.username }}</a>
     </li>
   </ul>
 </div>
