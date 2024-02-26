@@ -1,5 +1,5 @@
 <div>
-  <h1 *ngIf="currentChannel != undefined">{{ currentChannel?.name }}</h1>
+  <h1 *ngIf="currentChannel != undefined">{{ currentChannel.name }}</h1>
   <button *ngIf="currentUser && !currentChannel!.default" class="btn btn-info">Éditer</button>
   <button
     *ngIf="currentUser && !currentChannel!.default"
