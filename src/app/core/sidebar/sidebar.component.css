@@ -1,4 +1,21 @@
 #sidebar-wrapper {
-  max-width: 200px;
-  min-width: 200px;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+
+  /* Vous pouvez ajuster la valeur de la largeur de l'écran en fonction de vos besoins */
+  #sidebar-wrapper {
+    width: 250px;
+    /* Largeur de la sidebar pour les écrans de taille moyenne et plus grands */
+  }
+}
+
+@media (max-width: 767.98px) {
+
+  /* Vous pouvez ajuster la valeur de la largeur de l'écran en fonction de vos besoins */
+  #sidebar-wrapper {
+    width: 100%;
+    /* La sidebar occupe 100% de la largeur de l'écran pour les écrans plus petits que la taille moyenne */
+  }
 }
