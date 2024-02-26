@@ -1,4 +1,21 @@
 <div class="d-flex flex-column align-items-start">
+  <p class="mx-4 my-0 px-2">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="33"
+      height="24"
+      fill="currentColor"
+      class="bi bi-person-fill"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
+      />
+    </svg>
+    Utilisateurs
+  </p>
+
+  <hr class="w-100 m-0 grey-color my-2" />
   <ul class="m-0">
     <li
       (mouseenter)="addStyleHover($event)"
@@ -6,8 +23,11 @@
       *ngFor="let user of usersList"
       class="nav-item"
     >
-      <a *ngIf="connected" routerLink="messages/{{user.id}}" class="nav-link">{{ user.username }}
-        <span *ngIf="currentUser && currentUser.id == user.id" class="">(You)</span>
+      <a *ngIf="connected" routerLink="messages/{{ user.id }}" class="nav-link"
+        >{{ user.username }}
+        <span *ngIf="currentUser && currentUser.id == user.id" class=""
+          >(You)</span
+        >
       </a>
       <a *ngIf="!connected" class="nav-link">{{ user.username }}</a>
     </li>
