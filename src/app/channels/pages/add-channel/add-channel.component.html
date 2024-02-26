@@ -27,7 +27,7 @@
 <ng-template #template>
   <div class="modal-dialog m-0" role="document">
     <div class="modal-content">
-      <div style="border-bottom: none" class="modal-header row p-0 m-4">
+      <div style="border-bottom: none" class="modal-header custom-modal-header row p-0 m-4">
         <h5 class="modal-title col-12 text-center">Ajouter un canal</h5>
         <button
           type="button"
@@ -48,7 +48,7 @@
         </div>
         <div
           style="border-top: none"
-          class="modal-footer d-flex justify-content-center align-items-center"
+          class="modal-footer custom-modal-footer d-flex justify-content-center align-items-center"
         >
           <button
             type="button"
@@ -57,7 +57,7 @@
           >
             Annuler
           </button>
-          <button type="submit" class="btn btn-primary" (click)="addChannel()">
+          <button type="submit" class="btn custom-confirm-button" (click)="addChannel()">
             Ajouter
           </button>
         </div>
