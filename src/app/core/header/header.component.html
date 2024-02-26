@@ -12,7 +12,7 @@
     <ul class="navbar-nav justify-content-end">
       <li class="nav-item d-flex">
         <a *ngIf="connected; else elseBlock" class="nav-link">{{
-          currentUser.username
+          currentUser?.username
         }}</a>
 
         <ng-template #elseBlock

@@ -50,11 +50,16 @@ export class LoginUsersComponent {
             'sessionStorage is not available or response/response.username is undefined'
           );
         }
-        this.userFound = true; // Marquer l'utilisateur comme trouvé
+        this.usersStoreService.authenticateUser(user);
         this.closeModal();
-        this.router.navigate(['']).then(() => {
-          window.location.reload();
-        });
+        this.router.navigate(['']);
+
+        // this.userFound = true; // Marquer l'utilisateur comme trouvé
+        // this.closeModal();
+        // this.router.navigate(['']);
+        // this.router.navigate(['']).then(() => {
+        //   window.location.reload();
+        // });
       },
       (error) => {
         console.error(error);
