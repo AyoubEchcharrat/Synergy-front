@@ -7,6 +7,7 @@ import { User } from '../../../core/models/users';
 import { ChannelsStoreService } from '../../services/channels-store.service';
 import { Channel } from '../../../core/models/channels';
 import { ViewMessageService } from '../../../messages/services/view-message.service';
+import { UsersStoreService } from '../../../users/services/users-store.service';
 
 @Component({
   selector: 'app-view-channel',
@@ -16,7 +17,7 @@ import { ViewMessageService } from '../../../messages/services/view-message.serv
 export class ViewChannelComponent implements OnInit {
   id: number = Number(this.activatedRoute.snapshot.paramMap.get('id'));
   messages: ViewMessage[] = [];
-  currentUser!: User;
+  currentUser!: User | null;
   currentChannel: Channel | undefined;
   isChannelNameEdit: boolean = false;
 
@@ -25,20 +26,20 @@ export class ViewChannelComponent implements OnInit {
     private channelService: ChannelsService,
     private channelStore: ChannelsStoreService,
     private router: Router,
-    private messagesService: ViewMessageService
+    private messagesService: ViewMessageService,
+    private usersStoreService: UsersStoreService
   ) {}
 
   ngOnInit(): void {
+    this.usersStoreService.currentUser$.subscribe((user) => {
+      this.currentUser = user;
+    });
     this.activatedRoute.paramMap.subscribe((params) => {
       this.id = Number(params.get('id'));
       this.currentChannel = this.channelStore.findById(this.id);
 
       this.loadMessages();
     });
-    const tempUser = sessionStorage.getItem('currentUser');
-    if (tempUser) {
-      this.currentUser = JSON.parse(tempUser);
-    }
   }
 
   loadMessages() {

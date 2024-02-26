@@ -1,17 +1,27 @@
 <div>
-  <h1 *ngIf="currentChannel && !isChannelNameEdit">{{ currentChannel?.name }}</h1>
-  <app-edit-channel *ngIf="isChannelNameEdit" (closeEditChannelFormEmmitter)="isChannelNameEdit = false"></app-edit-channel>
+  <h1 *ngIf="currentChannel && !isChannelNameEdit">
+    {{ currentChannel.name }}
+  </h1>
+  <app-edit-channel
+    *ngIf="isChannelNameEdit"
+    (closeEditChannelFormEmmitter)="isChannelNameEdit = false"
+  ></app-edit-channel>
 
-  <button *ngIf="currentUser && !currentChannel!.default && !isChannelNameEdit"
-    (click)="showEditChannelForm()" [disabled]="isChannelNameEdit"
-    class="btn btn-info" >
+  <button
+    *ngIf="currentUser && !currentChannel!.default && !isChannelNameEdit"
+    (click)="showEditChannelForm()"
+    [disabled]="isChannelNameEdit"
+    class="btn btn-info"
+  >
     Éditer
   </button>
 
   <button
     *ngIf="currentUser && !currentChannel!.default && !isChannelNameEdit"
     class="btn btn-danger"
-    (click)="deleteChannel()" [disabled]="isChannelNameEdit">
+    (click)="deleteChannel()"
+    [disabled]="isChannelNameEdit"
+  >
     Supprimer le canal
   </button>
 </div>
