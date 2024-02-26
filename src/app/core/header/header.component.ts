@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../models/users';
-import {Router} from "@angular/router";
-import {UsersStoreService} from "../../users/services/users-store.service";
+import { Router } from '@angular/router';
+import { UsersStoreService } from '../../users/services/users-store.service';
 
 @Component({
   selector: 'app-header',
@@ -9,21 +9,21 @@ import {UsersStoreService} from "../../users/services/users-store.service";
   styleUrl: './header.component.css',
 })
 export class HeaderComponent implements OnInit {
-  @Input() currentUser!: User | null;
-  connected!: boolean;
+  currentUser!: User | null;
 
-  constructor(private router: Router, private usersStoreService: UsersStoreService) {
-  }
+  constructor(
+    private router: Router,
+    private usersStoreService: UsersStoreService
+  ) {}
   ngOnInit(): void {
-    this.usersStoreService.currentUser$.subscribe(user => {
+    this.usersStoreService.currentUser$.subscribe((user) => {
       this.currentUser = user;
-      this.connected = user != undefined;
+      console.log('subscribe user ', this.currentUser);
     });
   }
 
   logout() {
     sessionStorage.removeItem('currentUser');
-    this.connected = false;
     this.usersStoreService.authenticateUser(null);
     this.router.navigate(['']).then(() => {
       window.location.reload();

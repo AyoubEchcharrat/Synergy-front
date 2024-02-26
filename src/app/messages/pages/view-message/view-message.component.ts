@@ -9,7 +9,7 @@ import { User } from '../../../core/models/users';
 })
 export class ViewMessageComponent implements OnInit {
   @Input() message!: ViewMessage;
-  @Input() currentUser!: User;
+  //@Input() currentUser!: User;
 
   ngOnInit(): void {
     console.log(this.message);

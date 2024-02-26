@@ -1,9 +1,9 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { User } from '../../../core/models/users';
 import { Subscription } from 'rxjs';
 import { UsersService } from '../../services/users.service';
 import { UsersStoreService } from '../../services/users-store.service';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-users',
   templateUrl: './list-users.component.html',
@@ -13,8 +13,8 @@ export class ListUsersComponent implements OnInit, OnDestroy {
   headers: string[] = ['user name'];
   usersList: User[] = [];
   hover!: boolean;
-  @Input() currentUser!: User;
-  connected!: boolean;
+  currentUser!: User | null;
+  userId!: number;
 
   private userSubscription!: Subscription;
 
@@ -24,7 +24,12 @@ export class ListUsersComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.connected = this.currentUser != undefined;
+    this.usersStoreService.currentUser$.subscribe((user) => {
+      this.currentUser = user;
+      if (this.currentUser?.id) {
+        this.userId = this.currentUser?.id;
+      }
+    });
 
     this.userSubscription = this.usersService.getAllUsers().subscribe({
       next: (users: User[]) => {
@@ -52,5 +57,4 @@ export class ListUsersComponent implements OnInit, OnDestroy {
   //     this.usersStoreService.deleteUserById(id);
   //   })
   // }
-
 }

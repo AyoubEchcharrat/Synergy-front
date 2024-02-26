@@ -30,12 +30,12 @@
       <i class="bi bi-hand-thumbs-down-fill"></i>
       <span *ngIf="message.downvoters > 0">{{ message.downvoters }}</span>
     </div>
-    <div
+    <!--     <div
       id="modif-container"
       *ngIf="message.sender == currentUser.username"
       (click)="toggleModif()"
     >
       <i class="bi bi-pencil-fill"></i>
-    </div>
+    </div> -->
   </div>
 </div>

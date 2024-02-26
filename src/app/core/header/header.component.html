@@ -9,25 +9,28 @@
       />
       Synergy
     </a>
+    <!--  <div *ngIf="dataLoad"> -->
     <ul class="navbar-nav justify-content-end">
       <li class="nav-item d-flex">
-        <a *ngIf="connected; else elseBlock" class="nav-link">{{
-          currentUser?.username
+        <a *ngIf="currentUser; else elseBlock" class="nav-link">{{
+          currentUser.username
         }}</a>
-
         <ng-template #elseBlock
           ><app-login-users class="nav-link"></app-login-users>
           <app-register-users class="nav-link"></app-register-users
         ></ng-template>
       </li>
       <li class="nav-item d-flex">
-        <button *ngIf="connected"
-                type="button"
-                class="btn mx-0 p-1"
-                (click)="logout()">
+        <button
+          *ngIf="currentUser"
+          type="button"
+          class="btn mx-0 p-1"
+          (click)="logout()"
+        >
           <i class="bi bi-power"></i>
         </button>
       </li>
     </ul>
+    <!-- </div> -->
   </div>
 </nav>
