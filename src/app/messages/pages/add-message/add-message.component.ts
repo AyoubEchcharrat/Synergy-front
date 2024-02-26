@@ -30,9 +30,12 @@ export class AddMessageComponent implements OnInit {
     this.usersStoreService.currentUser$.subscribe((user) => {
       this.currentUser = user;
     });
-    this.currentChannel = this.channelsStoreService.findById(
-      Number(this.activatedRoute.snapshot.paramMap.get('id'))
-    );
+
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.currentChannel = this.channelsStoreService.findById(
+        Number(params.get('id'))
+      );
+    });
   }
 
   addMessage() {
