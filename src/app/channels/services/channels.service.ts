@@ -26,4 +26,8 @@ export class ChannelsService {
   deleteChannelById(id: number) : Observable<Channel> {
     return this.http.delete<Channel>(`${this.url}/${id}`);
   }
+
+  updateChannelName(channel: Channel) : Observable<any> {
+    return this.http.patch<Channel>(`${this.url}/${channel.id}`, channel);
+  }
 }

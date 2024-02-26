@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ChannelsService } from '../../services/channels.service';
 import { ViewMessage } from '../../../core/models/view-message';
 import { PublicMessage } from '../../../core/models/public-messages';
@@ -17,11 +17,13 @@ export class ViewChannelComponent implements OnInit {
   messages: ViewMessage[] = [];
   currentUser!: User;
   currentChannel: Channel | undefined;
+  isChannelNameEdit: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private channelService: ChannelsService,
-    private channelStore: ChannelsStoreService
+    private channelStore: ChannelsStoreService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -56,9 +58,18 @@ export class ViewChannelComponent implements OnInit {
   deleteChannel(): void {
     this.channelService.deleteChannelById(this.id)
       .subscribe({
-        next: value => console.log(`Channel ${this.id} deleted !`),
+        next: value => {
+          console.log(`Channel ${this.id} deleted !`);
+          this.router.navigate(['']).then(() =>
+            window.location.reload()
+          );
+        },
         error: err => console.log(err)
       })
+  }
+
+  showEditChannelForm() {
+    this.isChannelNameEdit = true;
   }
 
   convertMessageToViewMessage(message: PublicMessage): ViewMessage {
