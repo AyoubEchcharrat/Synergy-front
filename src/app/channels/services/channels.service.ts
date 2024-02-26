@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Channel } from '../../core/models/channels';
-import {PublicMessage} from "../../core/models/public-messages";
+import { PublicMessage } from '../../core/models/public-messages';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +23,7 @@ export class ChannelsService {
     return this.http.get<PublicMessage[]>(`${this.url}/${id}`);
   }
 
-  deleteChannelById(id: number) : Observable<Channel> {
+  deleteChannelById(id: number): Observable<Channel> {
     return this.http.delete<Channel>(`${this.url}/${id}`);
   }
 

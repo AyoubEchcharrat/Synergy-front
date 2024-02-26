@@ -3,6 +3,8 @@
     <input id="content" type="text" class="w-100" [formControl]="content" />
   </div>
   <div>
-    <button type="submit" class="btn btn-primary">Ajouter</button>
+    <button type="submit" class="btn btn-primary" (click)="addMessage()">
+      Ajouter
+    </button>
   </div>
 </form>
