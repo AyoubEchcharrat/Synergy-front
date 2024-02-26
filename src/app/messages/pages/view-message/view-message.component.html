@@ -32,7 +32,7 @@
     </div>
     <!--     <div
       id="modif-container"
-      *ngIf="message.sender == currentUser.username"
+      *ngIf="currentUser && message.sender == currentUser.username"
       (click)="toggleModif()"
     >
       <i class="bi bi-pencil-fill"></i>

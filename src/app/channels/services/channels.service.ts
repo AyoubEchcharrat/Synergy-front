@@ -22,4 +22,8 @@ export class ChannelsService {
   getChannelMessagesByChannelId(id: number): Observable<PublicMessage[]> {
     return this.http.get<PublicMessage[]>(`${this.url}/${id}`);
   }
+
+  deleteChannelById(id: number) : Observable<Channel> {
+    return this.http.delete<Channel>(`${this.url}/${id}`);
+  }
 }

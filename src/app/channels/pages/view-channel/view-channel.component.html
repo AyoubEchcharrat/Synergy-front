@@ -1,7 +1,11 @@
-<div *ngIf="currentChannel != undefined">
-  <h1>{{ currentChannel.name }}</h1>
+<div>
+  <h1 *ngIf="currentChannel != undefined">{{ currentChannel?.name }}</h1>
   <button class="btn btn-info">Éditer</button>
-  <button *ngIf="currentChannel.isDefault === true" class="btn btn-danger">
+  <button
+    *ngIf="!currentChannelIsDefault"
+    class="btn btn-danger"
+    (click)="deleteChannel()"
+  >
     Supprimer le canal
   </button>
 </div>
