@@ -18,6 +18,7 @@ export class ViewChannelComponent implements OnInit {
   currentUser!: User;
 
   currentChannel: Channel | undefined;
+  currentChannelIsDefault: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -31,7 +32,13 @@ export class ViewChannelComponent implements OnInit {
       this.currentChannel = this.channelStore.findById(
         Number(params.get('id'))
       );
+
+      if(this.currentChannel) {
+        this.currentChannelIsDefault = this.currentChannel.isDefault!;
+      }
+
       this.loadMessages();
+
     });
     const tempUser = sessionStorage.getItem('currentUser');
     if (tempUser) {
@@ -52,6 +59,14 @@ export class ViewChannelComponent implements OnInit {
         }
         console.log(this.messages.length);
       });
+  }
+
+  deleteChannel(): void {
+    this.channelService.deleteChannelById(this.id)
+      .subscribe({
+        next: value => console.log(`Channel ${this.id} deleted !`),
+        error: err => console.log(err)
+      })
   }
 
   convertMessageToViewMessage(message: PublicMessage): ViewMessage {
