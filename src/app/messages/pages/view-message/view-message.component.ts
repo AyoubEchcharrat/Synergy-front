@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ViewMessage } from '../../../core/models/view-message';
+import { User } from '../../../core/models/users';
 
 @Component({
   selector: 'app-view-message',
@@ -8,6 +9,7 @@ import { ViewMessage } from '../../../core/models/view-message';
 })
 export class ViewMessageComponent implements OnInit {
   @Input() message!: ViewMessage;
+  @Input() currentUser!: User;
 
   ngOnInit(): void {
     console.log(this.message);
@@ -16,4 +18,6 @@ export class ViewMessageComponent implements OnInit {
   toggleUpvote() {}
 
   toggleDownvote() {}
+
+  toggleModif() {}
 }

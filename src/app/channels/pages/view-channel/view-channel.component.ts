@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ChannelsService } from '../../services/channels.service';
 import { ViewMessage } from '../../../core/models/view-message';
 import { PublicMessage } from '../../../core/models/public-messages';
+import { User } from '../../../core/models/users';
 import { ChannelsStoreService } from '../../services/channels-store.service';
 import { Channel } from '../../../core/models/channels';
 
@@ -14,6 +15,8 @@ import { Channel } from '../../../core/models/channels';
 export class ViewChannelComponent implements OnInit {
   id: number = Number(this.activatedRoute.snapshot.paramMap.get('id'));
   messages: ViewMessage[] = [];
+  currentUser!: User;
+
   currentChannel: Channel | undefined;
 
   constructor(
@@ -30,6 +33,10 @@ export class ViewChannelComponent implements OnInit {
       );
       this.loadMessages();
     });
+    const tempUser = sessionStorage.getItem('currentUser');
+    if (tempUser) {
+      this.currentUser = JSON.parse(tempUser);
+    }
   }
 
   loadMessages() {

@@ -6,6 +6,9 @@
 <hr />
 <div *ngIf="messages.length > 0">
   <div *ngFor="let message of messages">
-    <app-view-message [message]="message"></app-view-message>
+    <app-view-message
+      [message]="message"
+      [currentUser]="currentUser"
+    ></app-view-message>
   </div>
 </div>
