@@ -3,7 +3,6 @@ import { ChannelsService } from '../../services/channels.service';
 import { Channel } from '../../../core/models/channels';
 import { Subscription } from 'rxjs';
 import { ChannelsStoreService } from '../../services/channels-store.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-channels',
@@ -17,8 +16,7 @@ export class ListChannelsComponent implements OnInit, OnDestroy {
 
   constructor(
     private channelService: ChannelsService,
-    private channelStore: ChannelsStoreService,
-    private activatedRoute: ActivatedRoute
+    private channelStore: ChannelsStoreService
   ) {}
 
   ngOnInit(): void {

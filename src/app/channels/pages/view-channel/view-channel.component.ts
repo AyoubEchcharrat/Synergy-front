@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ChannelsService } from '../../services/channels.service';
 import { ViewMessage } from '../../../core/models/view-message';
 import { PublicMessage } from '../../../core/models/public-messages';
+import { ChannelsStoreService } from '../../services/channels-store.service';
+import { Channel } from '../../../core/models/channels';
 
 @Component({
   selector: 'app-view-channel',
@@ -12,14 +14,20 @@ import { PublicMessage } from '../../../core/models/public-messages';
 export class ViewChannelComponent implements OnInit {
   id: number = Number(this.activatedRoute.snapshot.paramMap.get('id'));
   messages: ViewMessage[] = [];
+  currentChannel: Channel | undefined;
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private channelService: ChannelsService
+    private channelService: ChannelsService,
+    private channelStore: ChannelsStoreService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.id = Number(params.get('id'));
+      this.currentChannel = this.channelStore.findById(
+        Number(params.get('id'))
+      );
       this.loadMessages();
     });
   }

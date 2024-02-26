@@ -17,6 +17,11 @@ export class ChannelsStoreService {
   set channels(val: Channel[]) {
     this._channels.next(val);
   }
+
+  findById(id: number): Channel | undefined {
+    return this.channels.find((e) => e.id === id);
+  }
+
   addChannel(newChannel: Channel) {
     this.channels = [...this.channels, newChannel];
   }

@@ -1,3 +1,9 @@
+<div>
+  <h1 *ngIf="currentChannel != undefined">{{ currentChannel?.name }}</h1>
+
+  <button class="btn btn-danger">Supprimer le canal</button>
+</div>
+<hr />
 <div *ngIf="messages.length > 0">
   <div *ngFor="let message of messages">
     <app-view-message [message]="message"></app-view-message>
