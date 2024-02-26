@@ -16,9 +16,7 @@ export class ViewChannelComponent implements OnInit {
   id: number = Number(this.activatedRoute.snapshot.paramMap.get('id'));
   messages: ViewMessage[] = [];
   currentUser!: User;
-
   currentChannel: Channel | undefined;
-  currentChannelIsDefault: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,15 +28,10 @@ export class ViewChannelComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.id = Number(params.get('id'));
       this.currentChannel = this.channelStore.findById(
-        Number(params.get('id'))
+        this.id
       );
 
-      if(this.currentChannel) {
-        this.currentChannelIsDefault = this.currentChannel.isDefault!;
-      }
-
       this.loadMessages();
-
     });
     const tempUser = sessionStorage.getItem('currentUser');
     if (tempUser) {
@@ -57,7 +50,6 @@ export class ViewChannelComponent implements OnInit {
             this.convertMessageToViewMessage(msg),
           ];
         }
-        console.log(this.messages.length);
       });
   }
 

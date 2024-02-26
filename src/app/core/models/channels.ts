@@ -1,6 +1,6 @@
 export interface Channel {
   id?: number;
   name?: string;
-  isDefault?: boolean;
+  default?: boolean;
   creationDate?: Date;
 }

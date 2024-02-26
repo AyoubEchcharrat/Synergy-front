@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.usersStoreService.currentUser$.subscribe((user) => {
       this.currentUser = user;
-      console.log('subscribe user ', this.currentUser);
+      // console.log('subscribe user ', this.currentUser);
     });
   }
 

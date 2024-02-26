@@ -12,7 +12,7 @@ export class ViewMessageComponent implements OnInit {
   //@Input() currentUser!: User;
 
   ngOnInit(): void {
-    console.log(this.message);
+    //console.log(this.message);
   }
 
   toggleUpvote() {}
