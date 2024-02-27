@@ -32,9 +32,11 @@ export class ViewChannelComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.currentChannel && !this.isChannelNameEdit) {
-      this.canInitializeRestOfPage = true;
-    }
+    this.getCurrentChannel().then(() => {
+      if (!this.isChannelNameEdit) {
+        this.canInitializeRestOfPage = true;
+      }
+    });
 
     this.usersStoreService.currentUser$.subscribe((user) => {
       this.currentUser = user;
@@ -74,4 +76,16 @@ export class ViewChannelComponent implements OnInit {
   showEditChannelForm() {
     this.isChannelNameEdit = true;
   }
+
+  getCurrentChannel(): Promise<any> {
+    return new Promise((resolve) => {
+      const checkInterval = setInterval(() => {
+        if (this.currentChannel) {
+          clearInterval(checkInterval);
+          resolve(true);
+        }
+      }, 1000); // checks every second
+    });
+  }
+
 }
