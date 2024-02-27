@@ -20,6 +20,7 @@ export class ViewChannelComponent implements OnInit {
   currentUser!: User | null;
   currentChannel: Channel | undefined;
   isChannelNameEdit: boolean = false;
+  canInitializeRestOfPage = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -31,6 +32,10 @@ export class ViewChannelComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.currentChannel && !this.isChannelNameEdit) {
+      this.canInitializeRestOfPage = true;
+    }
+
     this.usersStoreService.currentUser$.subscribe((user) => {
       this.currentUser = user;
     });

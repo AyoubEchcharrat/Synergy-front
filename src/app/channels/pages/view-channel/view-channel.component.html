@@ -1,21 +1,25 @@
 <div>
   <h1 *ngIf="currentChannel && !isChannelNameEdit">{{ currentChannel.name }}</h1>
-  <app-edit-channel *ngIf="isChannelNameEdit" (closeEditChannelFormEmmitter)="isChannelNameEdit = false"></app-edit-channel>
 
-  <button *ngIf="currentUser && !currentChannel!.default && !isChannelNameEdit"
-    (click)="showEditChannelForm()" [disabled]="isChannelNameEdit"
-    class="btn btn-secondary" >
-    Éditer
-  </button>
+  <div *ngIf="canInitializeRestOfPage">
+    <app-edit-channel *ngIf="isChannelNameEdit"
+                      (closeEditChannelFormEmmitter)="isChannelNameEdit = false"></app-edit-channel>
 
-  <button
-    *ngIf="currentUser && !currentChannel!.default && !isChannelNameEdit"
-    class="btn custom-confirm-button ml-2"
-    (click)="deleteChannel()" [disabled]="isChannelNameEdit">
-    Supprimer le canal
-  </button>
+    <button *ngIf="currentUser && !currentChannel!.default && !isChannelNameEdit"
+            (click)="showEditChannelForm()" [disabled]="isChannelNameEdit"
+            class="btn btn-secondary">
+      Éditer
+    </button>
+
+    <button
+      *ngIf="currentUser && !currentChannel!.default && !isChannelNameEdit"
+      class="btn custom-confirm-button ml-2"
+      (click)="deleteChannel()" [disabled]="isChannelNameEdit">
+      Supprimer le canal
+    </button>
+  </div>
 </div>
-<hr />
+<hr/>
 <div *ngIf="messages.length > 0">
   <div *ngFor="let message of messages">
     <app-view-message [message]="message"></app-view-message>
